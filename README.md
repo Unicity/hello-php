@@ -1,6 +1,6 @@
-# NodeJS-Project
+# Hello PHP
 
-This is a sample "hello world" NodeJS project.
+This is a sample "Hello World" project written in PHP.
 
 To startup the service graph:
 

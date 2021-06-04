@@ -4,7 +4,16 @@ services:
         build:
             context: ../frontend-app
             dockerfile: Dockerfile
-        command: ["/bin/bash", "-c", "nodemon -L /var/www/app/index.js"]
+        command: ["/bin/bash", "-c", "/init.sh"]
+        environment:
+            - HYDRA_ENV=prod
         ports:
-            - 48080:8080
+            - 80:80
+            - 32000:7000
+            - 32002:7002
+            - 32004:7004
+            - 32006:7006
+            - 32008:7008
         restart: always
+        volumes:
+            - "../frontend-app/src:/var/www/html"

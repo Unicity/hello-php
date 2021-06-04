@@ -1,15 +1,12 @@
-FROM node:latest
+FROM unicityintl/php80apache:latest
 
-RUN apt-get update && apt-get install -y vim
+EXPOSE 80/tcp
+EXPOSE 7000/tcp
+EXPOSE 7002/tcp
+EXPOSE 7004/tcp
+EXPOSE 7008/tcp
 
-RUN mkdir -p var/www/app
+COPY ./setup/init.sh /init.sh
+COPY ./setup/apache2.conf /etc/apache2/sites-enabled/000-default.conf
 
-COPY ./src/ /var/www/app/
-COPY ./package.json /var/www/package.json
-
-RUN cd /var/www && npm install --only=production --loglevel=error
-RUN npm install -g nodemon --loglevel=error
-
-EXPOSE 8080
-
-WORKDIR /var/www
+RUN chmod 555 /init.sh

@@ -4,9 +4,12 @@ services:
         build:
             context: ../frontend-app
             dockerfile: Dockerfile
-        command: ["/bin/bash", "-c", "nodemon -L /var/www/app/index.js"]
+        command: ["/bin/bash", "-c", "/init.sh"]
+        environment:
+            - HYDRA_ENV=dev
+            - XDEBUG_ENABLED=1
         ports:
-            - 48080:8080
+            - 80:80
         restart: always
         volumes:
-            - "../frontend-app/src:/var/www/app"
+            - "../frontend-app/src:/var/www/html"

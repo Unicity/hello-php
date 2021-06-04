@@ -2,7 +2,7 @@
 # CONSTANTS FOR MAKEFILE
 ########################################################################
 
-PROJECT_UID = project
+PROJECT_UID = hello-php
 PROJECT_ENV = dev
 PROJECT_NAME = ${PROJECT_UID}-${PROJECT_ENV}
 
@@ -21,7 +21,7 @@ endif
 
 # make dc-graph-up
 dc-graph-up: dc-graph-down
-	docker-compose -p ${PROJECT_NAME} -f docker-compose-${PROJECT_ENV}.yml up
+	docker-compose -p ${PROJECT_NAME} -f docker-compose-${PROJECT_ENV}.yml up -d
 
 # make dc-graph-down
 dc-graph-down:
